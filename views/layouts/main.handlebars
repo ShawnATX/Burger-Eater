@@ -9,11 +9,57 @@
 </head>
 <body>
     <main class="container-fluid">
-    {{{ body }}}
+        {{{ body }}}
+        <div class="row">
+            <div class="col-12 align-middle">
+                <form action="">
+                    <div class="form-group">
+                        <textarea class="form-control" id="burgerName" rows="3"></textarea>
+                        <button class="btn btn-primary" id="saveNewBurger">Submit</button>
+                        <label for="burgerName">Add a new burger here and click Submit to add it to your plate.</label>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+	<script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+            $(".devour-me").on("click", function(event) {
+                const burgerToUpdate = 
+                {
+                    id: $(this).data("id"),
+                    devoured: true
+                }
+                $.ajax("/api/burger", {
+                    type: "PUT",
+                    data: burgerToUpdate
+                }).then( function() {
+                    console.log("Burger Murdered");
+                    location.reload();
+                })
+            })
+
+            $("#saveNewBurger").on("click", function(event) {
+                const name = 
+                {
+                    name: $("#burgerName").val().trim()
+                }
+                console.log(name);
+                $.ajax("/api/burger", {
+                    type: "POST",
+                    data: name
+                }).then( function(response) {
+                    console.log(response);
+                })
+            })
+        });
+
+        
+    </script>
 </body>
 </html>
