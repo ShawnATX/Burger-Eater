@@ -9,7 +9,6 @@ const getDevouredResult = (devoured) => {
     }
 };
 
-
 const orm = {
 
     selectAll: function(callback) {
