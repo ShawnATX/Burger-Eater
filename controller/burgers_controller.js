@@ -3,8 +3,7 @@ const burgerModel = require("../models/burgerModel");
 const router = express.Router();
 
 
-router.get("/", function(req, res) {
-    console.log("get all express");
+router.get("/index", function(req, res) {
     burgerModel.getAll(function(data) {
         var burgers = {
             burgers: data
@@ -14,19 +13,21 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burger", ( req, res) => {
-    console.log("post new express");
-    const { name } = req.body;
-    burgerModel.addBurger(name, function(data){
-        res.send(data);
-    } 
-    )
+    if (req.body.name === ""){
+        res.send("name missing");
+    }else{
+
+        const { name } = req.body;
+        burgerModel.addBurger(name, function(data){
+            res.send(data);
+        } 
+        )
+    }
 });
 
 router.put("/api/burger/", (req, res) => {
-    console.log("update express", req.body);
     const burger = req.body;
     burgerModel.updateBurger(burger, function(response) {
-        console.log(response);
         res.send(response);
     })
 });

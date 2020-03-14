@@ -1,0 +1,24 @@
+body{
+    background-color: #FFBC11;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+.highlight{
+    background-color: #DA291C;
+}
+
+#saveNewBurger{
+    background-color: #DA291C;
+}
+
+h1{
+    color: red;
+    font-weight: bolder;
+    font-size: 6rem;
+}
+
+.logoImg{
+    max-width: 10%;
+    display: block;
+}

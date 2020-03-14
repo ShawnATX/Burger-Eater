@@ -1,16 +1,17 @@
-<div class="row">
-    <div class="col-6">
+<div class="row mt-4">
+    <div class="col-4 offset-2">
 
         <ul class="list-group">
+            <h2 class="text-center">Ready To Eat!</h2>
             {{#each burgers}}
                 {{#unless devoured}}
-                    <li class="list-group-item">
+                    <li class="list-group-item highlight">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col text-warning text-center">
                                 {{burger_name}}
                             </div>
-                            <div class="col-6">  	
-                                <button class="devour-me" data-id="{{id}}">
+                            <div class="col">  	
+                                <button class="devour-me" type="submit" data-id="{{id}}">
                                     EAT ME!
                                 </button>
                             </div>
@@ -20,18 +21,20 @@
             {{/each}}
         </ul>
     </div>
+    <div class="col-4">
         <ul class="list-group">
+            <h2 class="text-center">Already Eaten!</h2>
             {{#each burgers}}
                 {{#if devoured}}
-                <li class="list-group-item">
+                <li class="list-group-item highlight">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 text-center text-warning">
                             {{burger_name}}
                         </div>
                     </div>
                 </li>
                 {{/if}}
             {{/each}}
-    <div class="col-6"></div>
         </ul>
+    </div>
 </div>
